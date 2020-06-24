@@ -1,0 +1,75 @@
+CREATE TABLE `Vanzator` (
+  `VANZATOR_ID` int,
+  `Nume` varchar(50),
+  `Telefon` varchar(10),
+  `Varsta` int,
+  PRIMARY KEY (`VANZATOR_ID`)
+);
+
+CREATE TABLE `Magazin` (
+  `MAGAZIN_ID` int,
+  `VANZATOR_ID` int,
+  `Nume` varchar(50),
+  `Telefon` varchar(10),
+  `Adresa` varchar(50),
+  `Email` varchar(50),
+  PRIMARY KEY (`MAGAZIN_ID`),
+  KEY `FK` (`VANZATOR_ID`)
+);
+
+CREATE TABLE `Produs` (
+  `PRODUS_ID` int,
+  `Nume` varchar(50),
+  `Categorie` varchar(50),
+  `Pret` float,
+  `Gramaj` int,
+  `Disponibilitate` bool,
+  PRIMARY KEY (`PRODUS_ID`)
+);
+
+CREATE TABLE `Client` (
+  `CLIENT_ID` int,
+  `Nume` varchar(50),
+  `Adresa` varchar(50),
+  `Telefon` varchar(10),
+  `Mail` varchar(50),
+  `Tip` varchar(50),
+  PRIMARY KEY (`CLIENT_ID`)
+);
+
+CREATE TABLE `Persoana Livrari` (
+  `PL_ID` int,
+  `Nume` varchar(50),
+  `Numar` varchar(50),
+  `Telefon` varchar(10),
+  `Email` varchar(50),
+  `Disponibil` bool,
+  PRIMARY KEY (`PL_ID`)
+);
+
+CREATE TABLE `Meniu` (
+  `MENIU_ID` int,
+  `Nume` varchar(50),
+  `Pret` float,
+  `Tip` varchar(50),
+  PRIMARY KEY (`MENIU_ID`)
+);
+
+CREATE TABLE `Produs_Meniu` (
+  `PRODUS_ID` int,
+  `MENIU_ID` int,
+  `` <type>,
+  KEY `PK,FK` (`PRODUS_ID`, `MENIU_ID`)
+);
+
+CREATE TABLE `Comanda` (
+  `COMANDA_ID` int,
+  `MAGAZIN_ID` int,
+  `CLIENT_ID` int,
+  `MENIU_ID` int,
+  `PL_ID` int,
+  `Cost` float,
+  PRIMARY KEY (`COMANDA_ID`),
+  KEY `FK` (`MAGAZIN_ID`, `CLIENT_ID`, `MENIU_ID`, `PL_ID`)
+);
+
